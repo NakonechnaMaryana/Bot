@@ -36,21 +36,20 @@ const keyboard = [
     const chatId = msg.chat.id;
   bot.sendMessage(msg.chat.id, 'Please type in your phone number');
     }); 
-
-bot.onText(/\/echo (.+)/, (msg, match) => {
-  const chatId = msg.chat.id;
-  const resp = match[1];
-  bot.sendMessage(chatId, resp);
-});
     
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
-  bot.sendMessage(chatId, 'Thank you! Please choose an animal: img = 'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRC8r7tTZz3ndlr3GY_1hZUY3isr1431Dtj2g&usqp=CAU' img = 'https://images.unsplash.com/photo-1570534536531-c3def02ad855?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'', {
+    bot.sendPhoto({
+        chat_id : message.chat.id,
+        caption: 'This is my test image',
+        photo: 'C:\Users\Userrr\Desktop\Pending\12.jpg'
+    })
+  bot.sendMessage(chatId, 'Thank you! Please choose an animal:', {
         reply_markup: {
             inline_keyboard: keyboard
         }
     });
-});  
+});
 
 bot.on('callback_query', (query) => {
     const chatId = query.message.chat.id;
