@@ -7,7 +7,7 @@ const bot = new TelegramBot(token, {polling: true});
 const keyboard = [
     [
       {text: 'Details about dog Winni',
-        callback_data: 'moreKeks'}
+        callback_data: 'moreDogs'}
     ],
     [
         {text: 'Details about dog Jack',
@@ -34,13 +34,11 @@ const keyboard = [
 
  bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
-  
   bot.sendMessage(msg.chat.id, 'Can I have access to your phone number?', requestPhoneKeyboard);
     }); 
     
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
-
   bot.sendMessage(chatId, 'Thank you! Please choose an animal', {
         reply_markup: {
             inline_keyboard: keyboard
@@ -53,7 +51,7 @@ bot.on('callback_query', (query) => {
 
     let img = '';
 
-    if (query.data === 'moreKeks') {
+    if (query.data === 'moreDogs') {
         img = 'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500';
     }
 
