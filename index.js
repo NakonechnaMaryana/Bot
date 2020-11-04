@@ -19,7 +19,7 @@ const keyboard = [
       ]
   ];
 
-  const requestPhoneKeyboard = {
+ /* const requestPhoneKeyboard = {
     "reply_markup": {
         "one_time_keyboard": true,
         "keyboard": [[{
@@ -30,12 +30,23 @@ const keyboard = [
         }], ["Cancel"]]
     }
  };
- 
+ */
 
  bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
-  bot.sendMessage(msg.chat.id, 'Can I have access to your phone number?', requestPhoneKeyboard);
+  bot.sendMessage(msg.chat.id, 'Please type in your phone number');
     }); 
+
+bot.onText(/\/echo (.+)/, (msg, match) => {
+  const chatId = msg.chat.id;
+  const resp = match[1];
+  bot.sendMessage(chatId, resp);
+});
+
+bot.on('contact', (msg) => {
+  const chatId = msg.chat.id;
+  bot.sendMessage(chatId, 'Thank you!');
+});
     
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
