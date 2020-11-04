@@ -42,15 +42,10 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
   const resp = match[1];
   bot.sendMessage(chatId, resp);
 });
-
-bot.on('contact', (msg) => {
-  const chatId = msg.chat.id;
-  bot.sendMessage(chatId, 'Thank you!');
-});
     
 bot.on('message', (msg) => {
     const chatId = msg.chat.id;
-  bot.sendMessage(chatId, 'Thank you! Please choose an animal', {
+  bot.sendMessage(chatId, 'Thank you! Please choose an animal: img = 'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500' img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRC8r7tTZz3ndlr3GY_1hZUY3isr1431Dtj2g&usqp=CAU' img = 'https://images.unsplash.com/photo-1570534536531-c3def02ad855?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'', {
         reply_markup: {
             inline_keyboard: keyboard
         }
@@ -60,21 +55,19 @@ bot.on('message', (msg) => {
 bot.on('callback_query', (query) => {
     const chatId = query.message.chat.id;
 
-    let img = '';
-
     if (query.data === 'moreDogs') {
-        img = 'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500';
+        text = "Amazing dog. Healthy and clean. 2 y.o";
     }
 
     if (query.data === 'morePes') {
-        img = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRC8r7tTZz3ndlr3GY_1hZUY3isr1431Dtj2g&usqp=CAU';
+        text = "Nice dog! 3 y.o.";
     }
     if (query.data === 'moreCat') {
-      img = 'https://images.unsplash.com/photo-1570534536531-c3def02ad855?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80';
+      text = "Beautiful kitten! 6 months old.";
     }
 
-    if (img) {
-        bot.sendPhoto(chatId, img, {
+    if (text) {
+        bot.sendMessage(chatId, text, {
         });
     } else {
         bot.sendMessage(chatId, 'Please try again', {
